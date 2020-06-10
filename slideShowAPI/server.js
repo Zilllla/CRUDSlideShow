@@ -35,11 +35,11 @@ app.get("/seed", (req, res) => {
     },
     {
       title: "seed2",
-      img2: "https://homepages.cae.wisc.edu/~ece533/images/boat.png"
+      img2: "https://homepages.cae.wisc.edu/~ece533/images/cat.png"
     },
     {
       title: "seed3",
-      img3: "https://homepages.cae.wisc.edu/~ece533/images/boat.png"
+      img3: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png"
     },
     {
       title: "seed4",
@@ -52,8 +52,30 @@ app.get("/seed", (req, res) => {
   ]);
 });
 
+//read
 app.get("/", (req, res) => {
-  res.send("Hello World On Fire");
+  Form.find({}, (err, allForms) => {
+    res.json(allForms);
+  });
+});
+
+//create
+app.post("/create", (req, res) => {
+  Form.create(req.body).then(data => res.json(data));
+});
+
+//update
+app.put("/:id", (req, res) => {
+  Form.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+    res.json(data);
+  });
+});
+
+//delete
+app.delete("/:id", (req, res) => {
+  Form.findByIdAndRemove(req.params.id, (err, data) => {
+    res.json(data);
+  });
 });
 
 //LISTEN
