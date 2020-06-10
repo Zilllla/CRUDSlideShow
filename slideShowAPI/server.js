@@ -26,52 +26,26 @@ db.on("open", () => {
 });
 
 //ROUTES
-//seedRoute
-app.get("/seed", (req, res) => {
-  Form.create([
-    {
-      title: "seed1",
-      img1: "https://homepages.cae.wisc.edu/~ece533/images/boat.png"
-    },
-    {
-      title: "seed2",
-      img2: "https://homepages.cae.wisc.edu/~ece533/images/cat.png"
-    },
-    {
-      title: "seed3",
-      img3: "https://homepages.cae.wisc.edu/~ece533/images/peppers.png"
-    },
-    {
-      title: "seed4",
-      img4: "https://homepages.cae.wisc.edu/~ece533/images/boat.png"
-    },
-    {
-      title: "seed5",
-      img5: "https://homepages.cae.wisc.edu/~ece533/images/boat.png"
-    }
-  ]);
-});
-
-//read
+//READ
 app.get("/", (req, res) => {
   Form.find({}, (err, allForms) => {
     res.json(allForms);
   });
 });
 
-//create
+//CREATE
 app.post("/create", (req, res) => {
   Form.create(req.body).then(data => res.json(data));
 });
 
-//update
+//UPDATE
 app.put("/:id", (req, res) => {
   Form.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     res.json(data);
   });
 });
 
-//delete
+//DELETE
 app.delete("/:id", (req, res) => {
   Form.findByIdAndRemove(req.params.id, (err, data) => {
     res.json(data);
