@@ -7,12 +7,25 @@ const baseURL = "http://localhost:4000/";
 class Main extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      images: []
+    };
   }
 
-  // axios.get(`${baseURL}`)
-  //   .then()
+  componentDidMount() {
+    axios.get(`${baseURL}`).then(res => {
+      console.log(res.data);
+    });
+  }
 
   render() {
-    return <h1>Blah fucking blah</h1>;
+    return (
+      <div>
+        <h1>Blah fucking blah</h1>
+        <img>{this.props.images}</img>
+      </div>
+    );
   }
 }
+
+export default Main;
