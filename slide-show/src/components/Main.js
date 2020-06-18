@@ -13,16 +13,17 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`${baseURL}`).then(res => {
-      console.log(res.data);
-    });
+    axios.get(baseURL).then(res =>
+      this.setState({
+        images: res.data
+      })
+    );
   }
 
   render() {
     return (
       <div>
         <h1>Blah fucking blah</h1>
-        <img>{this.props.images}</img>
       </div>
     );
   }
