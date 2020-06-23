@@ -1,5 +1,6 @@
 //REQ
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -14,6 +15,7 @@ const dbupdateobject = {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 //CONNECTION
 mongoose.connect(process.env.DATABASE_URL, dbupdateobject);
 db.on("error", err => console.log(err.message + " is Mongod not running?"));
