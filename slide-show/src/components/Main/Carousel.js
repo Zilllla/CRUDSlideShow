@@ -10,25 +10,34 @@ class Carousel extends React.Component {
     this.state = {
       imgSet: []
     };
-    this.fetchData.bind(this);
   }
 
   fetchData = () => {
-    axios.get(baseURL).then(res =>
+    axios.get("http://localhost:4000/").then(res => {
+      const images = res.data;
       this.setState({
-        imgSet: res.data
-      })
-    );
+        imgSet: images
+      });
+    });
   };
+
   componentDidMount() {
     this.fetchData();
   }
+
   render() {
     return (
       <div>
-        <h1>Image Carousel</h1>
-        {this.state.imgSet.map(() => (
-          <h3>{this.state.imgSet} </h3>
+        <h1>Testing</h1>
+        {this.state.imgSet.map(image => (
+          <div>
+            <h3>{image.title}</h3>
+            <img src={image.images.img1} />
+            <img src={image.images.img2} />
+            <img src={image.images.img3} />
+            <img src={image.images.img4} />
+            <img src={image.images.img5} />
+          </div>
         ))}
       </div>
     );
