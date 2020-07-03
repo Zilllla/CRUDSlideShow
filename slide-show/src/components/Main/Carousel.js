@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Elastic from "react-elastic-carousel";
+import Style from "styled-components";
 
 //BASE URL!!!!
 const baseURL = "http://localhost:4000/";
@@ -30,18 +31,19 @@ class Carousel extends React.Component {
     return (
       <div>
         <h1>Testing</h1>
-        <Elastic>
-          {this.state.imgSet.map(image => (
-            <div>
-              <h3>{image.title}</h3>
+
+        {this.state.imgSet.map(image => (
+          <div>
+            <h3>{image.title}</h3>
+            <Elastic itemsToShow={1}>
               <img src={image.images.img1} />
               <img src={image.images.img2} />
               <img src={image.images.img3} />
               <img src={image.images.img4} />
               <img src={image.images.img5} />
-            </div>
-          ))}
-        </Elastic>
+            </Elastic>
+          </div>
+        ))}
       </div>
     );
   }
