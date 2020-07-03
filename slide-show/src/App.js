@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Main from "./components/Main.js";
 import Header from "./components/Header.js";
+import Nav from "./components/Nav.js";
 
 import "./App.css";
 
@@ -11,25 +12,13 @@ const baseURL = "http://localhost:4000/";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   imgSet: {
-    //     _id: "",
-    //     title: "",
-    //     images: {
-    //       img1: "",
-    //       img2: "",
-    //       img3: "",
-    //       img4: "",
-    //       img5: ""
-    //     }
-    //   }
-    // };
   }
 
   render() {
     return (
       <div>
         <Header />
+        <Nav />
         <Main />
       </div>
     );
